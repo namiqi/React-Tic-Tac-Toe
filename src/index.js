@@ -66,7 +66,10 @@ class Game extends React.Component {
   }
   handleClick(i, status, winner) {
     const squares = this.state.squares.slice();
-
+	console.log(winner);
+    if (winner) {
+      return;
+    }
     if (this.state.numOfMoves === 9) {
       this.setState({ status: status });
       return;
@@ -122,7 +125,7 @@ class Game extends React.Component {
         <div className="game-board">
           <Board
             squares={this.state.squares}
-            onClick={i => this.handleClick(i, this.state.status)}
+            onClick={i => this.handleClick(i, this.state.status,winner)}
           />
           <Reset onClick={() => this.resetBoard(winner)} />
         </div>
